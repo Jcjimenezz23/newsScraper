@@ -1,0 +1,27 @@
+{
+  "name": "newsscraper",
+  "version": "1.0.0",
+  "description": "newsScraper is an app that lets users leave comments on the latest news that has been scraped from a website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jcjimenezz23/newsScraper.git"
+  },
+  "author": "Jc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jcjimenezz23/newsScraper/issues"
+  },
+  "homepage": "https://github.com/Jcjimenezz23/newsScraper#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.11.5",
+    "request": "^2.81.0"
+  }
+}
