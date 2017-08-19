@@ -24,7 +24,7 @@ router.get("/", function(req, res) {
 router.get("/savedarticles", function(req, res) {
 
   // Grab every doc in the Articles array
-  Article.find({}, function(error, doc) {
+  Article.find().toArray(function(error, doc) {
     // Log any errors
     if (error) {
       console.log(error);
@@ -59,8 +59,6 @@ router.post("/scrape", function(req, res) {
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("a").text();
-
-      console.log("Result title is" + result.title);
       
       result.link = $(this).children("a").attr("href");
 
@@ -79,8 +77,6 @@ router.post("/scrape", function(req, res) {
 
 
 router.post("/save", function(req, res) {
-
-  console.log("This is the title: " + req.body.title);
 
   var newArticleObject = {};
 
@@ -188,7 +184,7 @@ router.post("/articles/:id", function(req, res) {
         if (err) {
           console.log("Cannot find article.");
         } else {
-          console.log("On note save we are getting notes? " + doc.notes);
+          console.log("Notes" + doc.notes);
           res.send(doc);
         }
       });

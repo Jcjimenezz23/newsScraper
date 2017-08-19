@@ -10,7 +10,7 @@
  var request = require("request");
 
 //Note and Article models
-var Note = require("./models/note.js");
+var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
@@ -18,6 +18,8 @@ mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
+
+var PORT = process.env.PORT || 8080;
 
 // Use morgan and body parser with our app
 app.use(logger("dev"));
