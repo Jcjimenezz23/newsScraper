@@ -20,10 +20,6 @@ router.get("/", function(req, res) {
 });
 
 
-
-
-
-
 // This will get the articles scraped and saved in db and show them in list.
 router.get("/savedarticles", function(req, res) {
 
@@ -45,12 +41,6 @@ router.get("/savedarticles", function(req, res) {
 });
 
 
-
-
-
-
-
-
 // A GET request to scrape the echojs website
 router.post("/scrape", function(req, res) {
 
@@ -70,15 +60,13 @@ router.post("/scrape", function(req, res) {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("a").text();
 
-      console.log("What's the result title? " + result.title);
+      console.log("Result title is" + result.title);
       
       result.link = $(this).children("a").attr("href");
 
       scrapedArticles[i] = result;
 
     });
-
-    console.log("Scraped Articles object built nicely: " + scrapedArticles);
 
     var hbsArticleObject = {
         articles: scrapedArticles
@@ -88,10 +76,6 @@ router.post("/scrape", function(req, res) {
 
   });
 });
-
-
-
-
 
 
 router.post("/save", function(req, res) {
@@ -125,16 +109,7 @@ router.post("/save", function(req, res) {
 });
 
 
-
-
-
-
-
 router.get("/delete/:id", function(req, res) {
-
-  console.log("ID is getting read for delete" + req.params.id);
-
-  console.log("Able to activate delete function.");
 
   Article.findOneAndRemove({"_id": req.params.id}, function (err, offer) {
     if (err) {
@@ -145,11 +120,6 @@ router.get("/delete/:id", function(req, res) {
     res.redirect("/savedarticles");
   });
 });
-
-
-
-
-
 
 
 router.get("/notes/:id", function(req, res) {
@@ -195,16 +165,15 @@ router.get("/articles/:id", function(req, res) {
 });
 
 
-
-
-
 // Create a new note or replace an existing note
 router.post("/articles/:id", function(req, res) {
 
   // Create a new note and pass the req.body to the entry
   var newNote = new Note(req.body);
+
   // And save the new note the db
   newNote.save(function(error, doc) {
+
     // Log any errors
     if (error) {
       console.log(error);
