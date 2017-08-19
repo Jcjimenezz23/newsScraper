@@ -28,9 +28,6 @@ app.use(bodyParser.urlencoded({
 // Serve static content
 app.use(express.static("public"));
 
-//PORT
-var PORT = process.env.PORT || 8080;
-
 //setting handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -58,12 +55,3 @@ db.once("open", function() {
 app.listen(PORT, function() {
   console.log("App running on PORT " + PORT);
 });
-
-
-
-
-
-
-
-
-
